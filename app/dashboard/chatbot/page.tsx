@@ -42,7 +42,7 @@ const suggestCards: SuggestCard[] = [
 const ChatbotPage = () => {
 
   const { user } = useUser()
-  const { messages, input, handleInputChange, handleSubmit, error } = useChat({
+  const { messages, input, handleInputChange, handleSubmit} = useChat({
     onError: (error) => {
       console.error("Chat error details:", {
         message: error.message,

@@ -23,9 +23,13 @@ export const POST = async (req: Request) => {
             temperature: 0.3,
         })
         return response.toDataStreamResponse()
-    } catch (error: any) {
+    } catch (error) {
         console.error('API Route Error:', error);
-        return new Response(JSON.stringify({ error: error.message }), {
+        const errorMessage = error instanceof Error 
+            ? error.message 
+            : 'An unexpected error occurred';
+        
+        return new Response(JSON.stringify({ error: errorMessage }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' }
         });
