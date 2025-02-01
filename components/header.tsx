@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Container from "./container"
 import { UserButton } from "@clerk/clerk-react"
+import { Button } from "./ui/button"
 
 const Header = () => {
   return (
@@ -11,10 +12,23 @@ const Header = () => {
         <div className="block lg:hidden">
           {/* <Menu /> */}
         </div>
-        <div className="hidden lg:block">
-          <Link href={"/"} className="font-semibold text-2xl">
-            Taskly
+        <div className="flex items-center gap-11 justify-stretch">
+          <Link href={"/"} className="font-semibold text-2xl ">
+            <Button variant="ghost" className="hover:bg-black hover:text-white">
+            <p className="text-xl block hidden:lg">Taskly</p>
+            </Button>
           </Link>
+          <Link href={"/dashboard/chatbot"} className="font-semibold text-2xl block lg:hidden">
+          <Button variant="ghost" className="hover:bg-black hover:text-white">
+              <p className="text-xl">Chatbot</p>
+            </Button>
+          </Link>
+          <Link href={"/dashboard/tasks"} className="font-semibold text-2xl block lg:hidden">
+          <Button variant="ghost" className="hover:bg-black hover:text-white">
+          <p className="text-xl">Task</p>
+            </Button>
+          </Link>
+          
         </div>
         <div className="flex items-center gap-2">
           <div className="flex items-center">
