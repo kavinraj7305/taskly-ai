@@ -24,9 +24,11 @@ const TaskSummaryCard: FC<Props> = ({ task }) => {
       const newStatus = !isDone
       await updateTaskStatus({
         taskId: task._id,
-        isDone: newStatus
+        isDone: newStatus,
+        status: newStatus ? "completed" : "pending"
       })
       setIsDone(newStatus)
+
       toast({
         title: "Task status updated",
         description: "Task status updated successfully"
