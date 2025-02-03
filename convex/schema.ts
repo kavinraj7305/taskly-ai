@@ -7,5 +7,6 @@ export default defineSchema({
         isDone: v.boolean(),
         createdAt: v.number(),
         userId: v.string(),
+        status: v.union(v.literal("pending"), v.literal("completed")),
     }).index("by_user_id", ["userId"])
 })

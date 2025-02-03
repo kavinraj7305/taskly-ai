@@ -16,7 +16,8 @@ export const create = mutation({
             title: args.title,
             isDone: false,
             createdAt: Date.now(),
-            userId: args.userId
+            userId: args.userId,
+            status: "pending"
         })
     }
 })
@@ -55,10 +56,13 @@ export const toggleTask = mutation({
     args: {
         taskId: v.id("tasks"),
         isDone: v.boolean(),
+        status: v.union(v.literal("pending"), v.literal("completed")),
     },
     handler: async (ctx, args) => {
         await ctx.db.patch(args.taskId, {
-            isDone: args.isDone
+            isDone: args.isDone,
+            status: args.status
         })
     }
+
 })
